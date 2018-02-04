@@ -16,7 +16,7 @@ Arrays are created with square brackets and pipes:
 let arr: array(string) = [|"a", "b"|]
 ```
 
-## String: string
+## String
 
 Strings are created with double quotes:
 
