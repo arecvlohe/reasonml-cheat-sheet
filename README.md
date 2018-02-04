@@ -8,6 +8,32 @@ Lists are created with square brackets:
 let list: list(int) = [1, 2]
 ```
 
+### Spread
+
+```reason
+let list1 = [1, 2, 3];
+let list2 = [0, ...list1];
+
+Js.log(list2); /* [0, 1, 2, 3] */
+```
+
+### Rest
+
+```reason
+let list = [1, 2, 3, 4];
+
+let pm = (list) => {
+  switch(list) {
+    | [] => "Empty"
+    | [head, ...tail] => {j|I only want $head|j}
+  }
+};
+
+Js.log(pm(list)); /* I only want 1 */
+```
+
+* Can only use the spread operator once within a list
+
 ## Array
 
 Arrays are created with square brackets and pipes:
