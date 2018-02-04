@@ -17,6 +17,8 @@ let list2 = [0, ...list1];
 Js.log(list2); /* [0, 1, 2, 3] */
 ```
 
+_* Can only use the spread operator once within a list_
+
 ### Rest
 
 ```reason
@@ -31,8 +33,6 @@ let pm = (list) => {
 
 Js.log(pm(list)); /* I only want 1 */
 ```
-
-* Can only use the spread operator once within a list
 
 ## Array
 
