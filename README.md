@@ -172,7 +172,7 @@ Js.log(pm(Rocky)); /* "Rocky" */
 | /  | integer division |
 | /. | float division |
 | ** | exponentation |
-| `|>` | pipe / reverse application operator |
+| |> | pipe / reverse application operator |
 | @@ | application operator |
 | ~+ | unary addition integer |
 | ~+. | unary addition float |
