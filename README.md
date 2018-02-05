@@ -259,6 +259,7 @@ Js.log(pm(Rocky)); /* "Rocky" */
 | ~- | unary negation integer |
 | ~-. | unary negation float |
 | ++ | string concatenation |
+| @ | list concatenation |
 
 ## Helpful BuckleScript/OCaml Functions
 
