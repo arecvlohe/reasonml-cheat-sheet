@@ -104,6 +104,20 @@ let labeledArgs = (~arg1 as one, ~arg2 as two) => {
 Js.log(labeledArgs(~arg1="Some ", ~arg2="labeled args.")); /* "Some labeled args." */
 ```
 
+### Default and Optional Arguments
+
+```reason
+let labeledArgs = (~arg1="Some ", ~arg2=?, ()) =>
+  switch (arg2) {
+  | Some(arg) => arg1 ++ arg
+  | None => arg1 ++ "labeled args."
+  };
+
+let res = labeledArgs(~arg2=?Some("labeled args"), ());
+
+Js.log(res); /* Some labeled args. */
+```
+
 ### Partial Application
 
 ```reason
@@ -113,7 +127,9 @@ let labeledArgs = (~arg1 as one, ~arg2 as two) => {
 
 let firstArg = labeledArgs(~arg1="Some ");
 
-Js.log(firstArg(~arg2="labeled args.")); /* "Some labeled args." */
+let secondArg = firstArg(~arg2="labeled args.");
+
+Js.log(secondArg); /* "Some labeled args." */
 ```
 
 _* Doesn't matter which order you pass the labeled argument_
