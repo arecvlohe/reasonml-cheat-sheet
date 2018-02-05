@@ -96,7 +96,7 @@ Js.log(labeledArgs(~arg1="Some ", ~arg2="labeled args.")); /* "Some labeled args
 
 ### Labeled As
 
-```
+```reason
 let labeledArgs = (~arg1 as one, ~arg2 as two) => {
   one ++ two
 };
