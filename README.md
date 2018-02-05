@@ -64,6 +64,60 @@ let mickey: string = "Mickey"
 
 let scene: string = {j|$mickey makes $rocky chase chickens to get in shape.|j}
 ```
+## Functions
+
+### Named
+
+```reason
+let someFunction = () => "someFunction";
+```
+
+### Anonymous
+
+```reason
+let someFunction = () => {
+  () => {
+    "someAnonFunction"
+  }
+};
+
+Js.log(someFunction()()); /* "someAnonFunction" */
+```
+
+### Labeled Arguments
+
+```reason
+let labeledArgs = (~arg1, ~arg2) => {
+  arg1 ++ arg2
+};
+
+Js.log(labeledArgs(~arg1="Some ", ~arg2="labeled args.")); /* "Some labeled args." */
+```
+
+### Labeled As
+
+```
+let labeledArgs = (~arg1 as one, ~arg2 as two) => {
+  one ++ two
+};
+
+Js.log(labeledArgs(~arg1="Some ", ~arg2="labeled args.")); /* "Some labeled args." */
+```
+
+### Partial Application
+
+```reason
+let labeledArgs = (~arg1 as one, ~arg2 as two) => {
+  one ++ two
+};
+
+let firstArg = labeledArgs(~arg1="Some ");
+
+Js.log(firstArg(~arg2="labeled args.")); /* "Some labeled args." */
+```
+
+_* Doesn't matter which order you pass the labeled argument_
+
 
 ## Destructuring
 
