@@ -1,5 +1,15 @@
 # ReasonML Cheat Sheet
 
+ReasonML is a functional, strongly typed, programming language. It looks like JavaScript and compiles to JavaScript/Node as well as other languages. It is a dialect of OCaml and is compiled using BuckleScript. Therefore, you can use OCaml and BuckleScript APIs when using Reason.
+
+## Types
+
+1. Types are inferred. This means you don't have to declare types but you can if you want.
+1. Type coverage is 100%. Because types are inferred it means coverage is everywhere.
+1. Type system is sound. Compile and forget.
+
+Types: `list`, `array`, `string`, `char`, `bool`, `int`, `float`, `unit`, `option`, etc.
+
 ## List
 
 Lists are created with square brackets:
@@ -22,9 +32,9 @@ _* Can only use the spread operator once within a list_
 ### Rest
 
 ```reason
-let list = [1, 2, 3, 4];
+let list: list(int) = [1, 2, 3, 4];
 
-let pm = (list) => {
+let pm = (list): string => {
   switch(list) {
     | [] => "Empty"
     | [head, ...tail] => {j|I only want $head|j}
@@ -56,7 +66,7 @@ Strings are concatenated with double plus signs:
 let stringConcat: string = "Yo Adrian, " ++ "I did it!"
 ```
 
-Strings interpolation comes with help from BuckleScript:
+String interpolation comes with help from BuckleScript:
 
 ```reason
 let rocky: string = "Rocky"
@@ -64,6 +74,17 @@ let mickey: string = "Mickey"
 
 let scene: string = {j|$mickey makes $rocky chase chickens to get in shape.|j}
 ```
+
+## Char
+
+Characters are created using single quotes:
+
+```reason
+let char: char = 'a';
+
+Js.log(char); /* 97 */
+```
+
 ## Functions
 
 ### Named
