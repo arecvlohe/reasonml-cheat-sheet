@@ -183,7 +183,7 @@ Use the `switch` to pattern match against values:
 ```reason
 switch (value) {
   | 1 => "one"
-  | _ = "Everything else"
+  | _ => "Everything else"
 };
 ```
 
