@@ -247,9 +247,40 @@ Js.log(pm(arr)); /* 3 */
 type person = {
   firstName: string,
   lastName: string
-}
+};
 
 let listOfPerson: list(person) = [{ firstName: "Rocky", lastName: "Balboa" }];
+```
+
+### Closed Object
+```reason
+type obj = {
+  .
+  color: string,
+};
+
+let car: obj = {
+  pub color = "Red"
+};
+
+Js.log(car#color); /* "Red" */
+```
+_* Objects in Reason are like constructors in JS_
+
+### Open Object
+```reason
+type obj('a) = {
+  ..
+  color: string,
+} as 'a;
+
+let car: obj({. color: string, isRed: unit => bool }) = {
+  pub color = "Red";
+  pub isRed = () => this#getColor() == "Red";
+  pri getColor = () => this#color;
+};
+
+Js.log(car#isRed()); /* true */
 ```
 
 #### Tuple
