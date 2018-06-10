@@ -252,7 +252,7 @@ type person = {
 let listOfPerson: list(person) = [{ firstName: "Rocky", lastName: "Balboa" }];
 ```
 
-### Closed Object
+#### Closed Object
 ```reason
 type obj = {
   .
@@ -267,7 +267,7 @@ Js.log(car#color); /* "Red" */
 ```
 _* Objects in Reason are like constructors in JS_
 
-### Open Object
+#### Open Object
 ```reason
 type obj('a) = {
   ..
