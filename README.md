@@ -167,7 +167,7 @@ let [a, b]: list(int) = [1, 2];
 ### Array
 
 ```reason
-let [|a, b|]: list(int) = [1 , 2];
+let [|a, b|]: array(int) = [|1 , 2|];
 ```
 
 ### Tuple
