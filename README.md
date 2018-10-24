@@ -16,6 +16,16 @@ ReasonML is a functional, strongly typed, programming language. It looks like Ja
 
 Types: `list`, `array`, `string`, `char`, `bool`, `int`, `float`, `unit`, `option`, etc.
 
+## Generics
+
+Generics are created by putting a `'` in front of an arbitrary variable name. However, it is most common to see single letters used.
+
+```reason
+let length: array('a) => int;
+```
+
+Generics allow you to use a function in a more _generic_ way. In the case of `length`, it's a function which takes an array of any type, `'a`, and returns an `int`. In this instance, `'a` can be a `string`, an `int`, or a `record`. What it enforces is that the `array` contains only that type. It can either be `array(int)` or `array(string)` but not both.
+
 ## List
 
 Lists are created with square brackets:
@@ -33,7 +43,7 @@ let list2 = [0, ...list1];
 Js.log(list2); /* [0, 1, 2, 3] */
 ```
 
-_* Can only use the spread operator once within a list_
+_\* Can only use the spread operator once within a list_
 
 ### Rest
 
@@ -159,8 +169,7 @@ let secondArg = firstArg(~arg2="labeled args.");
 Js.log(secondArg); /* "Some labeled args." */
 ```
 
-_* Doesn't matter which order you pass the labeled argument_
-
+_\* Doesn't matter which order you pass the labeled argument_
 
 ## Destructuring
 
@@ -249,6 +258,7 @@ Js.log(pm(arr)); /* 3 */
 ### Literal
 
 #### Record
+
 ```reason
 type person = {
   firstName: string,
@@ -259,6 +269,7 @@ let listOfPerson: list(person) = [{ firstName: "Rocky", lastName: "Balboa" }];
 ```
 
 #### Closed Object
+
 ```reason
 type obj = {
   .
@@ -271,9 +282,11 @@ let car: obj = {
 
 Js.log(car#color); /* "Red" */
 ```
-_* Objects in Reason are like constructors in JS_
+
+_\* Objects in Reason are like constructors in JS_
 
 #### Open Object
+
 ```reason
 type obj('a) = {
   ..
@@ -315,32 +328,32 @@ Js.log(pm(Rocky)); /* "Rocky" */
 
 ## Operators
 
-| Symbol | Meaning |
-|--------|---------|
-| +  | integer addition |
-| +. | float addition
-| -  | integer subtraction |
-| -. | float subtraction |
-| *  | integer multiplication |
-| *. | float mulitplication |
-| /  | integer division |
-| /. | float division |
-| ** | exponentation |
-| \|> | pipe / reverse application operator |
-| @@ | application operator |
-| ~+ | unary addition integer |
-| ~+. | unary addition float |
-| ~- | unary negation integer |
-| ~-. | unary negation float |
-| ++ | string concatenation |
-| @ | list concatenation |
+| Symbol | Meaning                             |
+| ------ | ----------------------------------- |
+| +      | integer addition                    |
+| +.     | float addition                      |
+| -      | integer subtraction                 |
+| -.     | float subtraction                   |
+| \*     | integer multiplication              |
+| \*.    | float mulitplication                |
+| /      | integer division                    |
+| /.     | float division                      |
+| \*\*   | exponentation                       |
+| \|>    | pipe / reverse application operator |
+| @@     | application operator                |
+| ~+     | unary addition integer              |
+| ~+.    | unary addition float                |
+| ~-     | unary negation integer              |
+| ~-.    | unary negation float                |
+| ++     | string concatenation                |
+| @      | list concatenation                  |
 
 ## Helpful BuckleScript/OCaml Functions
 
-| Function | Meaning |
-|----------|---------|
-| Js.log | Logs value to console |
-| Js.Float.isNaN | Checks to see if value is `NaN` |
+| Function                 | Meaning                                    |
+| ------------------------ | ------------------------------------------ |
+| Js.log                   | Logs value to console                      |
+| Js.Float.isNaN           | Checks to see if value is `NaN`            |
 | Js.Boolean.to_js_boolean | Convert OCaml/Reason boolean to JS boolean |
-| string_of_int | Convert integer into string |
-| string_of_float | Convert float to string |
+| string_of_int            | Convert integer into string                |
+| string_of_float          | Convert float to string                    |
