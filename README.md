@@ -26,6 +26,41 @@ let length: array('a) => int;
 
 Generics allow you to use a function in a more _generic_ way. In the case of `length`, it's a function which takes an array of any type, `'a`, and returns an `int`. In this instance, `'a` can be a `string`, an `int`, or a `record`. What it enforces is that the `array` contains only that type. It can either be `array(int)` or `array(string)` but not both.
 
+## Phantom Types
+
+Phantom types are types declared within a type module but without a type definition.
+
+```reason
+module type Person = {
+  type details;
+  type greeting;
+
+  let greet: unit => greeting;
+}
+```
+
+From the example above, the module declares `details`, `greeting`, and `greet` types but leaves it to the module to define their implementation.
+
+```reason
+module Person: Person = {
+  type details = { name: string, age: int, title: string };
+  type greeting = string
+
+  let details: details = { name: "Adam", age: 31, title: "ReasonML Developer"}
+
+  let greet = () => {
+    let {name, age, title} = details;
+    {j| Hello. My name is $name and I am $age years old. I am a $title|j};
+  }
+}
+
+Js.log(Person.greet());
+```
+
+In the module implementation above, the types are defined per the `module type`. If either `details`, `greeting`, or `greet` are not declared the module will not compile.
+
+This is practiced a lot with ReasonML APIs. The `module type` is defined and ensures the consumer of the module uses it accordingly.
+
 ## List
 
 Lists are created with square brackets:
