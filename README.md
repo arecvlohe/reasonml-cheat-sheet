@@ -28,38 +28,51 @@ Generics allow you to use a function in a more _generic_ way. In the case of `le
 
 ## Phantom Types
 
-Phantom types are types declared within a type module but without a type definition.
+*"A phantom type is a parametrised type whose parameters do not all appear on the right-hand side of its definition..."* - [Haskell Wiki, PhantomType](https://wiki.haskell.org/Phantom_type)
+
+```reason
+type formData('a) = string;
+```
+
+Here `formData` is a phantom type as the `'a` parameter only appears on the left side.
+
+### References
+
+- [Phantom Types in ReasonML](https://sketch.sh/s/nerP3hkOxX6sMVvVUtBIbs/) by Ali Sharif
+- [Phantom Types in ReasonML](https://medium.com/reasontraining/phantom-types-in-reasonml-1a4cfc18d999) by Kennet Postigo
+
+## Abstract Types
+
+An abstract type is a type without a concrete definition.
 
 ```reason
 module type Person = {
   type details;
-  type greeting;
-
-  let greet: unit => greeting;
-}
+  
+  let person: details;
+  let make: unit => details;
+  let greet: details => string;
+} 
 ```
 
-From the example above, the module declares `details`, `greeting`, and `greet` types but leaves it to the module to define their implementation.
+From the example above, the module declares the `details` type but leaves it to the module to define its implementation.
 
 ```reason
 module Person: Person = {
-  type details = { name: string, age: int, title: string };
-  type greeting = string
-
-  let details: details = { name: "Adam", age: 31, title: "ReasonML Developer"}
-
-  let greet = () => {
-    let {name, age, title} = details;
-    {j| Hello. My name is $name and I am $age years old. I am a $title|j};
-  }
+  type details = { name: string, age: int };
+  
+  let person = { name: "Adam", age: 31};
+  let make = () => person;
+  let greet = (details) => "Hello. My name is " ++ details.name ++ " and I am " ++ string_of_int(details.age) ++ " years old.";
 }
 
-Js.log(Person.greet());
+let adam = Person.make();
+let greet = Person.greet(adam);
 ```
 
-In the module implementation above, the types are defined per the `module type`. If either `details`, `greeting`, or `greet` are not declared the module will not compile.
+### References
 
-This is practiced a lot with ReasonML APIs. The `module type` is defined and ensures the consumer of the module uses it accordingly.
+- [Module Signatures](https://reasonml.github.io/docs/en/module#signatures)
 
 ## List
 
