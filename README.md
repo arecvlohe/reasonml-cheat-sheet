@@ -4,7 +4,7 @@ ReasonML is a functional, strongly typed, programming language. It looks like Ja
 
 ## Try it Out
 
-If you want a more interactive example of ReasonML's language features, check out this link to the ReasonML REPL on their homepage: 👉 [Click here](http://bit.ly/reasonml-examples) 👈. 
+If you want a more interactive example of ReasonML's language features, check out this link to the ReasonML REPL on their homepage: 👉 [Click here](bit.ly/reason-by-example) 👈. 
 
 ## Comments
 
