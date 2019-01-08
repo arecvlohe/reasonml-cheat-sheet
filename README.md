@@ -2,6 +2,10 @@
 
 ReasonML is a functional, strongly typed, programming language. It looks like JavaScript and compiles to JavaScript/Node as well as other languages. It is a dialect of OCaml and is compiled using BuckleScript. Therefore, you can use OCaml and BuckleScript APIs when using Reason.
 
+## Try it Out
+
+If you want a more interactive example of ReasonML's language features, check out this link to the ReasonML REPL on their homepage: 👉 [Click here](http://bit.ly/reasonml-examples) 👈. 
+
 ## Comments
 
 ```reason
