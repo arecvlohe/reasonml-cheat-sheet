@@ -76,7 +76,7 @@ let greet = Person.greet(adam);
 
 ### References
 
-- [Module Signatures](https://reasonml.github.io/docs/en/module#signatures)
+- [Abstract Types - Ocaml Documentation](https://ocaml.org/learn/tutorials/modules.html#Abstract-types)
 
 ## List
 
