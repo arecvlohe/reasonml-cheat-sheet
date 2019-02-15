@@ -277,16 +277,17 @@ switch (option) {
 ```reason
 let arr: array(int) = [|1, 2, 3|];
 
-let pm = (arr: array(int)): int => {
+let matchArr: array(int) => int = arr => {
   switch (arr) {
     | [|a, b, _|] => a + b
     | [|a, b|] => a
     | [|a|] => 0
     | [||] => -1
+    | _ => 0
   };
 };
 
-Js.log(pm(arr)); /* 3 */
+Js.log(matchArr(arr)); /* 3 */
 ```
 
 ### Guards
@@ -294,15 +295,16 @@ Js.log(pm(arr)); /* 3 */
 ```reason
 let arr = [|1, 2, 3|];
 
-let pm = (arr: array(int)): int =>
+let matchArr: array(int) => int = (arr) =>
   switch arr {
   | [|a, b, _|] when a < 2 => a + b
   | [|a, _, _|] when a > 2 => a
   | [|a|] => 0
   | [||] => (-1)
+  | _ => 0
   };
 
-Js.log(pm(arr)); /* 3 */
+Js.log(matchArr(arr)); /* 3 */
 ```
 
 ## Types
@@ -368,14 +370,14 @@ type person =
   | Mickey
   | Adrian;
 
-let pm = (who: person) =>
+let matchPerson: person => string = (who: person) =>
   switch who {
   | Rocky => "Rocky"
   | Mickey => "Mickey"
   | Adrian => "Adrian"
   };
 
-Js.log(pm(Rocky)); /* "Rocky" */
+Js.log(matchPerson(Rocky)); /* "Rocky" */
 ```
 
 ## Operators
@@ -399,6 +401,7 @@ Js.log(pm(Rocky)); /* "Rocky" */
 | ~-.    | unary negation float                |
 | ++     | string concatenation                |
 | @      | list concatenation                  |
+| ->     | Pipe first                          |
 
 ## Helpful BuckleScript/OCaml Functions
 
@@ -406,6 +409,5 @@ Js.log(pm(Rocky)); /* "Rocky" */
 | ------------------------ | ------------------------------------------ |
 | Js.log                   | Logs value to console                      |
 | Js.Float.isNaN           | Checks to see if value is `NaN`            |
-| Js.Boolean.to_js_boolean | Convert OCaml/Reason boolean to JS boolean |
 | string_of_int            | Convert integer into string                |
 | string_of_float          | Convert float to string                    |
