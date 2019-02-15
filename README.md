@@ -401,7 +401,7 @@ Js.log(matchPerson(Rocky)); /* "Rocky" */
 | ~-.    | unary negation float                |
 | ++     | string concatenation                |
 | @      | list concatenation                  |
-| ->     | Pipe first                          |
+| ->     | pipe first                          |
 
 ## Helpful BuckleScript/OCaml Functions
 
