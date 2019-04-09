@@ -356,6 +356,20 @@ let car: obj({. color: string, isRed: unit => bool }) = {
 Js.log(car#isRed()); /* true */
 ```
 
+#### JavaScript Object
+```reason
+type person = {
+ .
+ "name": string,
+ [@bs.meth] "greet": unit => unit,
+};
+
+let printPerson = (p:person) => {
+  Js.log(p##name);
+  p##greet();
+}
+```
+
 #### Tuple
 
 ```reason
